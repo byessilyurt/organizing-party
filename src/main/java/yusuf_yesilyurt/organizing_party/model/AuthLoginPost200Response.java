@@ -14,13 +14,46 @@ import jakarta.annotation.Generated;
 @JsonTypeName("_auth_login_post_200_response")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-16T18:13:16.422362+02:00[Europe/Warsaw]")
 public class AuthLoginPost200Response {
-
   @JsonProperty("token")
   private String token;
+
+  @JsonProperty("userId")
+  private Integer userId;
+
+  @JsonProperty("username")
+  private String username;
 
   public AuthLoginPost200Response token(String token) {
     this.token = token;
     return this;
+  }
+
+  public AuthLoginPost200Response userId(Integer userId) {
+    this.userId = userId;
+    return this;
+  }
+
+  @Schema(name = "userId", description = "User ID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
+
+  public AuthLoginPost200Response username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  @Schema(name = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   /**
