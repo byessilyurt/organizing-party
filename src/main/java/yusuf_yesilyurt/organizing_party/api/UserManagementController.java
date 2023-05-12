@@ -7,7 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-
+import java.util.List;
+import java.util.ArrayList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import yusuf_yesilyurt.organizing_party.model.AuthLoginPost200Response;
@@ -17,7 +18,7 @@ import yusuf_yesilyurt.organizing_party.model.User;
 @Controller
 public class UserManagementController implements UserManagementApi {
 
-    private final ConcurrentHashMap<Integer, User> userMap = new ConcurrentHashMap<>();
+    public static final ConcurrentHashMap<Integer, User> userMap = new ConcurrentHashMap<>();
     private final AtomicInteger idCounter = new AtomicInteger(1);
 
     @Override
@@ -77,6 +78,12 @@ public class UserManagementController implements UserManagementApi {
             return ResponseEntity.ok(user);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @Override
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = new ArrayList<>(userMap.values());
+        return ResponseEntity.ok(users);
     }
 
 }

@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
 import jakarta.validation.Valid;
 import java.util.Optional;
+import java.util.List;
 import jakarta.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-16T18:13:16.422362+02:00[Europe/Warsaw]")
@@ -152,6 +154,15 @@ public interface UserManagementApi {
         });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
+    }
+
+    @Operation(summary = "Get all users")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful operation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)))
+    })
+    @GetMapping("/users")
+    default ResponseEntity<List<User>> getAllUsers() {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

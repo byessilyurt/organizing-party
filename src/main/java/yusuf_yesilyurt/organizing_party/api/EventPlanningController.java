@@ -1,11 +1,14 @@
 package yusuf_yesilyurt.organizing_party.api;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import yusuf_yesilyurt.organizing_party.model.Event;
 import yusuf_yesilyurt.organizing_party.model.EventsGetRequest;
+import yusuf_yesilyurt.organizing_party.model.User;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -73,6 +76,26 @@ public class EventPlanningController implements EventPlanningApi {
 
         eventMap.put(event.getId(), event);
 
+        // Fetch the user who created the event.
+        User user = UserManagementController.userMap.get(event.getUserId());
+
+        // If the user does not exist, return a 404 error.
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        // If the user's events list is null, initialize it.
+        if (user.getEvents() == null) {
+            user.setEvents(new ArrayList<>());
+        }
+
+        // Add the new event to the user's events list.
+        user.getEvents().add(event);
+
+        // Put the updated user back into the map.
+        UserManagementController.userMap.put(user.getId(), user);
+
         return ResponseEntity.created(URI.create("/events/" + event.getId())).build();
     }
+
 }
