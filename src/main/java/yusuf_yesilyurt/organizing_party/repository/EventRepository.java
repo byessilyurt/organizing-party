@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import yusuf_yesilyurt.organizing_party.model.Event;
 
 public interface EventRepository extends JpaRepository<Event, Integer> {
-    List<Event> findByUserId(Integer userId);
+    List<Event> findByUser_Id(Integer userId);
 }

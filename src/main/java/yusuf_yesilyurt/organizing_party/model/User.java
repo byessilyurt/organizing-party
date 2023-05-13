@@ -8,27 +8,31 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import jakarta.annotation.Generated;
+import jakarta.persistence.*;
 
 /**
  * User
  */
-
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-16T18:13:16.422362+02:00[Europe/Warsaw]")
+@Entity
+@Table(name = "users")
 public class User {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("id")
   private Integer id;
 
+  @Column(unique = true)
   @JsonProperty("username")
   private String username;
 
   @JsonProperty("password")
   private String password;
 
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
   @JsonProperty("events")
   @Valid
-  private List<Event> events = null;
+  private List<Event> events = new ArrayList<>();
 
   public User id(Integer id) {
     this.id = id;

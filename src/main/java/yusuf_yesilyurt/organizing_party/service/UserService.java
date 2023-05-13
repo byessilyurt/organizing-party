@@ -2,6 +2,8 @@ package yusuf_yesilyurt.organizing_party.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import yusuf_yesilyurt.organizing_party.model.Event;
 import yusuf_yesilyurt.organizing_party.model.User;
 import yusuf_yesilyurt.organizing_party.repository.UserRepository;
 
@@ -36,5 +38,12 @@ public class UserService {
 
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    public void addEventToUser(User user, Event event) {
+        List<Event> userEvents = user.getEvents();
+        userEvents.add(event);
+        user.setEvents(userEvents);
+        userRepository.save(user);
     }
 }

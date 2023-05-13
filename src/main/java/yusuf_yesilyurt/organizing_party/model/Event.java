@@ -2,24 +2,37 @@ package yusuf_yesilyurt.organizing_party.model;
 
 import java.net.URI;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 
-import jakarta.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Event
  */
-
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-16T18:13:16.422362+02:00[Europe/Warsaw]")
+@Entity
+@Table(name = "events")
 public class Event {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("id")
   private Integer id;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
+  @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+  private User user;
 
   @JsonProperty("title")
   private String title;
@@ -37,9 +50,6 @@ public class Event {
 
   @JsonProperty("imageUrl")
   private URI imageUrl;
-
-  @JsonProperty("userId")
-  private Integer userId;
 
   public Event id(Integer id) {
     this.id = id;
@@ -164,24 +174,19 @@ public class Event {
     this.imageUrl = imageUrl;
   }
 
-  public Event userId(Integer userId) {
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * User ID of the event creator
-   * 
-   * @return userId
-   */
-  @NotNull
-  @Schema(name = "userId", description = "User ID of the event creator", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("userId")
   public Integer getUserId() {
-    return userId;
+    return this.user != null ? this.user.getId() : null;
   }
 
-  public void setUserId(Integer userId) {
-    this.userId = userId;
+  @JsonIgnore
+  public User getUser() {
+    return user;
+  }
+
+  public Event setUser(User user) {
+    this.user = user;
+    return this;
   }
 
   @Override
@@ -199,12 +204,12 @@ public class Event {
         Objects.equals(this.eventDate, event.eventDate) &&
         Objects.equals(this.description, event.description) &&
         Objects.equals(this.imageUrl, event.imageUrl) &&
-        Objects.equals(this.userId, event.userId);
+        Objects.equals(this.user, event.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, creationDate, eventDate, description, imageUrl, userId);
+    return Objects.hash(id, title, creationDate, eventDate, description, imageUrl, user);
   }
 
   @Override
@@ -217,7 +222,7 @@ public class Event {
     sb.append("    eventDate: ").append(toIndentedString(eventDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
   }

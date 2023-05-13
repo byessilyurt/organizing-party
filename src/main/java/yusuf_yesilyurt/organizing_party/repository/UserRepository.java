@@ -5,4 +5,7 @@ import yusuf_yesilyurt.organizing_party.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByUsername(String username);
+
+    @Override
+    User save(User user);
 }

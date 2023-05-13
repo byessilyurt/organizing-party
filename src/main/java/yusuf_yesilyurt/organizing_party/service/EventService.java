@@ -27,7 +27,7 @@ public class EventService {
     }
 
     public List<Event> getEventsByUserId(Integer userId) {
-        return eventRepository.findByUserId(userId);
+        return eventRepository.findByUser_Id(userId);
     }
 
     public Event saveEvent(Event event) {
