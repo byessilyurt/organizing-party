@@ -53,7 +53,6 @@ public interface EventPlanningApi {
         return eventsEventIdDelete(eventId);
     }
 
-    // Override this method
     default ResponseEntity<Void> eventsEventIdDelete(Integer eventId) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -79,7 +78,6 @@ public interface EventPlanningApi {
         return eventsEventIdGet(eventId);
     }
 
-    // Override this method
     default ResponseEntity<Event> eventsEventIdGet(Integer eventId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -142,7 +140,6 @@ public interface EventPlanningApi {
         return eventsGet(page, limit);
     }
 
-    // Override this method
     default ResponseEntity<List<Event>> eventsGet(Integer page, Integer limit) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -174,7 +171,6 @@ public interface EventPlanningApi {
         return eventsPost(eventsGetRequest);
     }
 
-    // Override this method
     default ResponseEntity<Void> eventsPost(EventsGetRequest eventsGetRequest) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 

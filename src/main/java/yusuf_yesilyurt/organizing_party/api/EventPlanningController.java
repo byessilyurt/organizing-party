@@ -64,24 +64,18 @@ public class EventPlanningController implements EventPlanningApi {
 
     @Override
     public ResponseEntity<Void> eventsPost(EventsGetRequest eventsGetRequest) {
-        // Fetch the user who created the event.
         Optional<User> userOptional = userService.getUserById(eventsGetRequest.getUserId());
-
-        // If the user does not exist, return a 404 error.
         if (!userOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
         User user = userOptional.get();
-
         Event event = new Event()
                 .title(eventsGetRequest.getTitle())
                 .creationDate(eventsGetRequest.getCreationDate())
                 .eventDate(eventsGetRequest.getEventDate())
                 .description(eventsGetRequest.getDescription())
                 .imageUrl(eventsGetRequest.getImageUrl())
-                .setUser(user); // Set the user object on event
-
+                .setUser(user);
         eventService.saveEvent(event);
         userService.addEventToUser(user, event);
 

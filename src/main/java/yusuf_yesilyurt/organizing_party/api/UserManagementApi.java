@@ -56,7 +56,6 @@ public interface UserManagementApi {
         return authLoginPost(authRegisterPostRequest);
     }
 
-    // Override this method
     default ResponseEntity<AuthLoginPost200Response> authLoginPost(AuthRegisterPostRequest authRegisterPostRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -91,7 +90,6 @@ public interface UserManagementApi {
         return authRegisterPost(authRegisterPostRequest);
     }
 
-    // Override this method
     default ResponseEntity<Void> authRegisterPost(AuthRegisterPostRequest authRegisterPostRequest) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -115,7 +113,6 @@ public interface UserManagementApi {
         return usersUserIdDelete(userId);
     }
 
-    // Override this method
     default ResponseEntity<Void> usersUserIdDelete(Integer userId) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
