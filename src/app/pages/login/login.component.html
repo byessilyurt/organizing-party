@@ -1,12 +1,12 @@
-<div class="login-container">
+<div class="login-container" style="margin: 10px 0 0 20px;">
     <h1>Login</h1>
     <form (ngSubmit)="login()">
-      <div>
-        <label for="username">Username</label>
-        <input type="text" id="username" [(ngModel)]="username" name="username" required>
+      <div style="margin-bottom: 10px;">
+        <label for="username"style="margin-right:5px; width:80px;  display: inline-block;" >Username</label>
+        <input type="text" id="username" [(ngModel)]="username"  name="username" required>
       </div>
-      <div>
-        <label for="password">Password</label>
+      <div style="margin-bottom: 10px;">
+        <label for="password" style="margin-right:5px; width:80px; display: inline-block;">Password</label>
         <input type="password" id="password" [(ngModel)]="password" name="password" required>
       </div>
       <button type="submit">Login</button>

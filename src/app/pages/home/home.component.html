@@ -37,14 +37,14 @@
       </form>
 
       <h2 style="cursor: pointer;" (click)="getEvents()">All Events</h2>
-      <ul style="list-style-type: none; padding: 0;">
+      <ol style="list-style-type: none; padding: 0;">
         <li *ngFor="let event of events" style="margin-bottom: 10px;">
-          {{ event.title }} ({{ event.id }})
+         <span style="display:inline-block; min-width:100px;"> {{ event.title }} </span>
           <button style="margin-left: 10px;" (click)="deleteEvent(event.id)">Delete</button>
           <button style="margin-left: 10px;" (click)="selectEvent(event.id)">Edit</button>
           <button style="margin-left: 10px;" (click)="getEventDetail(event.id)">Detail</button>
         </li>
-      </ul>
+      </ol>
 
       <div *ngIf="selectedEventDetail" style="margin-top: 20px;">
         <h2>Event Detail:</h2>

@@ -13,8 +13,8 @@ export class EventService {
 
   constructor(private http: HttpClient, private authService: AuthService) { } 
 
-  getEvents() {
-    return this.http.get<any[]>(`${this.apiUrl}/events?page=1&limit=3`);
+  getEvents(page: number = 1, limit: number = 10) {
+    return this.http.get<any[]>(`${this.apiUrl}/events?page=${page}&limit=${limit}`);
   }
 
   createEvent(event: any) {
