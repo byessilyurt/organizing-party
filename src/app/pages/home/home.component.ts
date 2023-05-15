@@ -18,9 +18,7 @@ export class HomeComponent implements OnInit {
   selectedEvent: any;
   showEditForm = false;
   selectedEventDetail: any = null;
-
-
-
+  
   newEvent = {
     title: '',
     description: '',
