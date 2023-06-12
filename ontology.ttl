@@ -1,0 +1,127 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix op: <http://www.organizingparty.com/ontology#> .
+
+# Physical Objects
+
+# Event Place
+op:EventPlace a rdfs:Class ;
+    rdfs:comment "A location where an event is held" ;
+    rdfs:label "EventPlace" .
+
+op:hasAddress a rdfs:Property ;
+    rdfs:comment "The address of the event place" ;
+    rdfs:label "hasAddress" ;
+    rdfs:domain op:EventPlace ;
+    rdfs:range xsd:string .
+
+op:hasCapacity a rdfs:Property ;
+    rdfs:comment "The capacity of the event place" ;
+    rdfs:label "hasCapacity" ;
+    rdfs:domain op:EventPlace ;
+    rdfs:range xsd:integer .
+
+op:hasFacility a rdfs:Property ;
+    rdfs:comment "The facilities available at the event place" ;
+    rdfs:label "hasFacility" ;
+    rdfs:domain op:EventPlace ;
+    rdfs:range xsd:string .
+
+op:hasEvent a rdfs:Property ;
+    rdfs:comment "The event taking place at the event place" ;
+    rdfs:label "hasEvent" ;
+    rdfs:domain op:EventPlace ;
+    rdfs:range op:Event .
+
+# Floor Assistants
+op:FloorAssistant a rdfs:Class ;
+    rdfs:comment "An assistant who helps manage events" ;
+    rdfs:label "FloorAssistant" .
+
+op:hasName a rdfs:Property ;
+    rdfs:comment "The name of the floor assistant" ;
+    rdfs:label "hasName" ;
+    rdfs:domain op:FloorAssistant ;
+    rdfs:range xsd:string .
+
+op:hasRole a rdfs:Property ;
+    rdfs:comment "The role of the floor assistant" ;
+    rdfs:label "hasRole" ;
+    rdfs:domain op:FloorAssistant ;
+    rdfs:range xsd:string .
+
+op:worksAt a rdfs:Property ;
+    rdfs:comment "The event place where the floor assistant works" ;
+    rdfs:label "worksAt" ;
+    rdfs:domain op:FloorAssistant ;
+    rdfs:range op:EventPlace .
+
+# Beverages
+op:Beverage a rdfs:Class ;
+    rdfs:comment "A drink served at an event" ;
+    rdfs:label "Beverage" .
+
+op:hasBeverageType a rdfs:Property ;
+    rdfs:comment "The type of the beverage" ;
+    rdfs:label "hasBeverageType" ;
+    rdfs:domain op:Beverage ;
+    rdfs:range xsd:string .
+
+op:hasBrand a rdfs:Property ;
+    rdfs:comment "The brand of the beverage" ;
+    rdfs:label "hasBrand" ;
+    rdfs:domain op:Beverage ;
+    rdfs:range xsd:string .
+
+op:hasPrice a rdfs:Property ;
+    rdfs:comment "The price of the beverage" ;
+    rdfs:label "hasPrice" ;
+    rdfs:domain op:Beverage ;
+    rdfs:range xsd:float .
+
+# Abstract Concepts
+
+# Event Duration
+op:EventDuration a rdfs:Class ;
+    rdfs:comment "The length of time an event lasts" ;
+    rdfs:label "EventDuration" .
+
+op:hasDuration a rdfs:Property ;
+    rdfs:comment "The duration of the event" ;
+    rdfs:label "hasDuration" ;
+    rdfs:domain op:EventDuration ;
+    rdfs:range xsd:duration .
+
+# Event Rules
+op:EventRule a rdfs:Class ;
+    rdfs:comment "A rule applied to an event" ;
+    rdfs:label "EventRule" .
+
+op:hasRuleDescription a rdfs:Property ;
+    rdfs:comment "The description of the event rule" ;
+    rdfs:label "hasRuleDescription" ;
+    rdfs:domain op:EventRule ;
+    rdfs:range xsd:string .
+
+op:hasRuleType a rdfs:Property ;
+    rdfs:comment "The type of the event rule" ;
+    rdfs:label "hasRuleType" ;
+    rdfs:domain op:EventRule ;
+    rdfs:range xsd:string .
+
+# Event Risks
+op:EventRisk a rdfs:Class ;
+    rdfs:comment "A potential risk during an event" ;
+    rdfs:label "EventRisk" .
+
+op:hasRiskLevel a rdfs:Property ;
+    rdfs:comment "The level of risk" ;
+    rdfs:label "hasRiskLevel" ;
+    rdfs:domain op:EventRisk ;
+    rdfs:range xsd:string .
+
+op:hasRiskDescription a rdfs:Property ;
+    rdfs:comment "The description of the event risk" ;
+    rdfs:label "hasRiskDescription" ;
+    rdfs:domain op:EventRisk ;
+    rdfs:range xsd:string .

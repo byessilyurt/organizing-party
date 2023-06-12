@@ -1,82 +1,92 @@
-    <div style="margin: 20px;">
-      <h2 style="cursor: pointer;" (click)="getUsers()">All Users</h2>
-      <ul style="list-style-type: none; padding: 0;">
-        <li *ngFor="let user of users" style="margin-bottom: 10px;">
-<span style="display:inline-block; width: 100px;">
-    {{ user.username }}
-</span>
-          <button style="margin-left: 10px;" (click)="deleteUser(user.id)">Delete</button>
-          <button style="margin-left: 10px;" (click)="selectUser(user.id)">Select</button>
-        </li>
-      </ul>
+<div style="margin: 20px;" vocab="http://schema.org/" typeof="WebPage">
+  <h2 style="cursor: pointer;" (click)="getUsers()" property="name">All Users</h2>
+  <ul style="list-style-type: none; padding: 0;">
+    <li *ngFor="let user of users" style="margin-bottom: 10px;" typeof="Person">
+      <span style="display:inline-block; width: 100px;" property="name">
+        {{ user.username }}
+      </span>
+      <button style="margin-left: 10px;" (click)="deleteUser(user.id)" property="deleteAction">Delete</button>
+      <button style="margin-left: 10px;" (click)="selectUser(user.id)" property="selectAction">Select</button>
+    </li>
+  </ul>
 
-      <div *ngIf="selectedUser" style="margin-top: 20px;">
-        <h2>Selected User:</h2>
-        <p>
-          Username: {{ selectedUser.username }}<br>
-          Password: {{ selectedUser.password }}<br>
-          ID: {{ selectedUser.id }}
-        </p>
-      </div>
+  <div *ngIf="selectedUser" style="margin-top: 20px;">
+    <h2 property="name">Selected User:</h2>
+    <p>
+      Username: {{ selectedUser.username }}<br>
+      Password: {{ selectedUser.password }}<br>
+      ID: {{ selectedUser.id }}
+    </p>
+  </div>
 
-      <h2 style="margin-top: 20px;">Create Event</h2>
-      <form (ngSubmit)="createEvent()" #eventForm="ngForm" style="margin-bottom: 20px;">
-        <label for="title">Title</label>
-        <input type="text" id="title" [(ngModel)]="newEvent.title" name="title" style="border:1px solid black; padding:4px; margin-left: 10px;">
+  <h2 style="margin-top: 20px;">Create Event</h2>
+  <form (ngSubmit)="createEvent()" #eventForm="ngForm" style="margin-bottom: 20px;" typeof="CreateAction">
+    <label for="title" property="name">Title</label>
+    <input type="text" id="title" [(ngModel)]="newEvent.title" name="title" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-        <label for="description" style="margin-left: 10px;">Description</label>
-        <input type="text" id="description" [(ngModel)]="newEvent.description" name="description" style="border:1px solid black; padding:4px; margin-left: 10px;">
+    <label for="description" style="margin-left: 10px;" property="description">Description</label>
+    <input type="text" id="description" [(ngModel)]="newEvent.description" name="description" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-        <label for="imageUrl" style="margin-left: 10px;">Image URL</label>
-        <input type="text" id="imageUrl" [(ngModel)]="newEvent.imageUrl" name="imageUrl" style="border:1px solid black; padding:4px; margin-left: 10px;">
+    <label for="imageUrl" style="margin-left: 10px;" property="image">Image URL</label>
+    <input type="text" id="imageUrl" [(ngModel)]="newEvent.imageUrl" name="imageUrl" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-        <label for="eventDate" style="margin-left: 10px;">Event Date</label>
-        <input type="date" id="eventDate" [(ngModel)]="newEvent.eventDate" name="eventDate" style="border:1px solid black; padding:4px; margin-left: 10px;">
+    <label for="eventDate" style="margin-left: 10px;" property="startDate">Event Date</label>
+    <input type="date" id="eventDate" [(ngModel)]="newEvent.eventDate" name="eventDate" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-        <button type="submit" style="margin-left: 10px;">Submit</button>
-      </form>
+    <!-- Add dummy data for location and startDate -->
+    <input type="text" hidden property="location" value="Dummy Location">
+    <input type="date" hidden property="startDate" value="2023-01-01">
 
-      <h2 style="cursor: pointer;" (click)="getEvents()">All Events</h2>
-      <ol style="list-style-type: none; padding: 0;">
-        <li *ngFor="let event of events" style="margin-bottom: 10px;">
-         <span style="display:inline-block; min-width:100px;"> {{ event.title }} </span>
-          <button style="margin-left: 10px;" (click)="deleteEvent(event.id)">Delete</button>
-          <button style="margin-left: 10px;" (click)="selectEvent(event.id)">Edit</button>
-          <button style="margin-left: 10px;" (click)="getEventDetail(event.id)">Detail</button>
-        </li>
-      </ol>
+    <button type="submit" style="margin-left: 10px;">Submit</button>
+  </form>
 
-      <div *ngIf="selectedEventDetail" style="margin-top: 20px;">
-        <h2>Event Detail:</h2>
-        <p>
-          Title: {{ selectedEventDetail.title }}<br>
-          Description:
-          {{ selectedEventDetail.description }}<br>
-          Event Date: {{ selectedEventDetail.eventDate }}<br>
-          Creation Date: {{ selectedEventDetail.creationDate }}<br>
-          User ID: {{ selectedEventDetail.userId }}
-        </p>
-        <img [src]="selectedEventDetail.imageUrl" style="max-width: 300px;" alt="event image">
-      </div>
+  <h2 style="cursor: pointer;" (click)="getEvents()" property="name">All Events</h2>
+  <ol style="list-style-type: none; padding: 0;">
+    <li *ngFor="let event of events" style="margin-bottom: 10px;" typeof="Event">
+      <span style="display:inline-block; min-width:100px;">
+        <span property="name">{{ event.title }}</span>
+        <meta property="location" content="Dummy Location" />
+        <meta property="startDate" content="2023-01-01" />
+      </span>
+      <button style="margin-left: 10px;" (click)="deleteEvent(event.id)" property="deleteAction">Delete</button>
+      <button style="margin-left: 10px;" (click)="selectEvent(event.id)" property="updateAction">Edit</button>
+      <button style="margin-left: 10px;" (click)="getEventDetail(event.id)" property="readAction">Detail</button>
+    </li>
+  </ol>
 
-      <div *ngIf="selectedEvent" style="margin-top: 20px;">
-        <h2>Edit Event:</h2>
-        <form (ngSubmit)="updateEvent()" #editEventForm="ngForm">
-          <label for="title">Title</label>
-          <input type="text" id="title" [(ngModel)]="selectedEvent.title" name="title" style="border:1px solid black; padding:4px; margin-left: 10px;">
+  <div *ngIf="selectedEventDetail" style="margin-top: 20px;">
+    <h2 property="name">Event Detail:</h2>
+    <p>
+      Title: {{ selectedEventDetail.title }}<br>
+      Description: {{ selectedEventDetail.description }}<br>
+      Event Date: {{ selectedEventDetail.eventDate }}<br>
+      Creation Date: {{ selectedEventDetail.creationDate }}<br>
+      User ID: {{ selectedEventDetail.userId }}
+    </p>
+    <img [src]="selectedEventDetail.imageUrl" style="max-width: 300px;" alt="event image" property="image">
+  </div>
 
-          <label for="description" style="margin-left: 10px;">Description</label>
-          <input type="text" id="description" [(ngModel)]="selectedEvent.description" name="description" style="border:1px solid black; padding:4px; margin-left: 10px;">
+  <div *ngIf="selectedEvent" style="margin-top: 20px;">
+    <h2 property="name">Edit Event:</h2>
+    <form (ngSubmit)="updateEvent()" #editEventForm="ngForm" typeof="UpdateAction">
+      <label for="title" property="name">Title</label>
+      <input type="text" id="title" [(ngModel)]="selectedEvent.title" name="title" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-          <label for="imageUrl" style="margin-left: 10px;">Image URL</label>
-          <input type="text" id="imageUrl" [(ngModel)]="selectedEvent.imageUrl" name="imageUrl" style="border:1px solid black; padding:4px; margin-left: 10px;">
+      <label for="description" style="margin-left: 10px;" property="description">Description</label>
+      <input type="text" id="description" [(ngModel)]="selectedEvent.description" name="description" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-          <label for="eventDate" style="margin-left: 10px;">Event Date</label>
-          <input type="date" id="eventDate" [(ngModel)]="selectedEvent.eventDate" name="eventDate" style="border:1px solid black; padding:4px; margin-left: 10px;">
+      <label for="imageUrl" style="margin-left: 10px;" property="image">Image URL</label>
+      <input type="text" id="imageUrl" [(ngModel)]="selectedEvent.imageUrl" name="imageUrl" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-          <button type="submit" style="margin-left: 10px;">Submit</button>
-        </form>
-      </div>
+      <label for="eventDate" style="margin-left: 10px;" property="startDate">Event Date</label>
+      <input type="date" id="eventDate" [(ngModel)]="selectedEvent.eventDate" name="eventDate" style="border:1px solid black; padding:4px; margin-left: 10px;">
 
-      <button (click)="logout()" style="margin-top: 20px;">Logout</button>
-    </div>
+      <input type="text" hidden property="location" value="Miami">
+      <input type="date" hidden property="startDate" value="2023-01-01">
+
+      <button type="submit" style="margin-left: 10px;">Submit</button>
+    </form>
+  </div>
+
+  <button (click)="logout()" style="margin-top: 20px;">Logout</button>
+</div>

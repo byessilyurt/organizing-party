@@ -1,6 +1,7 @@
 package yusuf_yesilyurt.organizing_party.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import yusuf_yesilyurt.organizing_party.model.Event;
 import yusuf_yesilyurt.organizing_party.repository.EventRepository;
@@ -36,5 +37,9 @@ public class EventService {
 
     public void deleteEvent(Integer id) {
         eventRepository.deleteById(id);
+    }
+
+    public List<Event> getAllEventsSortedByDate() {
+        return eventRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
     }
 }

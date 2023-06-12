@@ -3,12 +3,14 @@ package yusuf_yesilyurt.organizing_party.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yusuf_yesilyurt.organizing_party.model.Event;
 import yusuf_yesilyurt.organizing_party.model.EventsGetRequest;
 import yusuf_yesilyurt.organizing_party.model.User;
 import yusuf_yesilyurt.organizing_party.service.EventService;
 import yusuf_yesilyurt.organizing_party.service.UserService;
+import yusuf_yesilyurt.organizing_party.service.SparqlService;
 
 import java.net.URI;
 import java.util.List;
@@ -19,6 +21,9 @@ public class EventPlanningController implements EventPlanningApi {
 
     private final EventService eventService;
     private final UserService userService;
+
+    @Autowired
+    private SparqlService sparqlService;
 
     @Autowired
     public EventPlanningController(EventService eventService, UserService userService) {
@@ -80,6 +85,12 @@ public class EventPlanningController implements EventPlanningApi {
         userService.addEventToUser(user, event);
 
         return ResponseEntity.created(URI.create("/events/" + event.getId())).build();
+    }
+
+    @GetMapping("/runQueries")
+    public ResponseEntity<List<String>> runQueries() {
+        List<String> results = sparqlService.runQueries();
+        return ResponseEntity.ok(results);
     }
 
 }

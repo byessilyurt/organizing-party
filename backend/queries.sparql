@@ -1,0 +1,40 @@
+PREFIX op: <http://www.organizingparty.com/ontology#>
+SELECT ?eventPlace ?address
+WHERE {
+?eventPlace a op:EventPlace.
+?eventPlace op:hasAddress ?address.
+}
+
+PREFIX op: <http://www.organizingparty.com/ontology#>
+SELECT ?beverage
+WHERE {
+?beverage a op:Beverage.
+?beverage op:hasPrice ?price.
+}
+ORDER BY DESC(?price)
+LIMIT 1
+
+PREFIX op: <http://www.organizingparty.com/ontology#>
+SELECT ?eventPlace
+WHERE {
+?eventPlace a op:EventPlace.
+?eventPlace op:hasCapacity ?capacity.
+FILTER(?capacity > 200)
+}
+
+PREFIX op: <http://www.organizingparty.com/ontology#>
+SELECT ?assistant
+WHERE {
+?assistant a op:FloorAssistant.
+?assistant op:worksAt ?eventPlace.
+?eventPlace op:hasCapacity ?capacity.
+FILTER(?capacity > 500)
+}
+
+PREFIX op: <http://www.organizingparty.com/ontology#>
+SELECT ?risk
+WHERE {
+?risk a op:EventRisk.
+?risk op:hasRiskLevel ?riskLevel.
+FILTER(?riskLevel = "High")
+}

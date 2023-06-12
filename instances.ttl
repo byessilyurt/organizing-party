@@ -1,0 +1,139 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix op: <http://www.organizingparty.com/ontology#> .
+
+op:EventPlace1 a op:EventPlace ;
+    op:hasAddress "123 Party Street, Party City, Party Country" ;
+    op:hasCapacity 200 ;
+    op:hasFacility "Projector, Sound System, Bar" ;
+    op:hasEvent "Event1" .
+
+op:EventPlace2 a op:EventPlace ;
+    op:hasAddress "456 Celebration Avenue, Festive Town, Party Country" ;
+    op:hasCapacity 150 ;
+    op:hasFacility "Dance Floor, Stage, Catering" ;
+    op:hasEvent "Event2" .
+
+op:EventPlace3 a op:EventPlace ;
+    op:hasAddress "789 Festivity Road, Celebration City, Party Country" ;
+    op:hasCapacity 300 ;
+    op:hasFacility "Outdoor Area, BBQ Grill, Swimming Pool" ;
+    op:hasEvent "Event3" .
+
+op:EventPlace4 a op:EventPlace ;
+    op:hasAddress "987 Fiesta Lane, Celebration City, Party Country" ;
+    op:hasCapacity 100 ;
+    op:hasFacility "Lounge Area, DJ Booth" ;
+    op:hasEvent "Event4" .
+
+op:EventPlace5 a op:EventPlace ;
+    op:hasAddress "654 Joyful Road, Festive Town, Party Country" ;
+    op:hasCapacity 250 ;
+    op:hasFacility "Stage, Bar, Photobooth" ;
+    op:hasEvent "Event5" .
+
+op:FloorAssistant1 a op:FloorAssistant ;
+    op:hasName "John Doe" ;
+    op:hasRole "Coordinator" ;
+    op:worksAt op:EventPlace1 .
+
+op:FloorAssistant2 a op:FloorAssistant ;
+    op:hasName "Jane Smith" ;
+    op:hasRole "Supervisor" ;
+    op:worksAt op:EventPlace2 .
+
+op:FloorAssistant3 a op:FloorAssistant ;
+    op:hasName "Mike Johnson" ;
+    op:hasRole "Attendant" ;
+    op:worksAt op:EventPlace3 .
+
+op:FloorAssistant4 a op:FloorAssistant ;
+    op:hasName "Sarah Thompson" ;
+    op:hasRole "Event Coordinator" ;
+    op:worksAt op:EventPlace4 .
+
+op:FloorAssistant5 a op:FloorAssistant ;
+    op:hasName "Michael Davis" ;
+    op:hasRole "Event Planner" ;
+    op:worksAt op:EventPlace5 .
+
+op:Beverage1 a op:Beverage ;
+    op:hasBeverageType "Alcoholic" ;
+    op:hasBrand "BrandX" ;
+    op:hasPrice 5.50 .
+
+op:Beverage2 a op:Beverage ;
+    op:hasBeverageType "Non-Alcoholic" ;
+    op:hasBrand "BrandY" ;
+    op:hasPrice 3.75 .
+
+op:Beverage3 a op:Beverage ;
+    op:hasBeverageType "Soft Drink" ;
+    op:hasBrand "BrandZ" ;
+    op:hasPrice 2.50 .
+
+op:Beverage4 a op:Beverage ;
+    op:hasBeverageType "Cocktail" ;
+    op:hasBrand "BrandA" ;
+    op:hasPrice 8.50 .
+
+op:Beverage5 a op:Beverage ;
+    op:hasBeverageType "Mocktail" ;
+    op:hasBrand "BrandB" ;
+    op:hasPrice 4.25 .
+
+op:EventDuration1 a op:EventDuration ;
+    op:hasDuration "PT2H"^^xsd:duration .  # 2 hours
+
+op:EventDuration2 a op:EventDuration ;
+    op:hasDuration "PT3H"^^xsd:duration .  # 3 hours
+
+op:EventDuration3 a op:EventDuration ;
+    op:hasDuration "PT4H"^^xsd:duration .  # 4 hours
+
+op:EventDuration4 a op:EventDuration ;
+    op:hasDuration "PT5H"^^xsd:duration .  # 5 hours
+
+op:EventDuration5 a op:EventDuration ;
+    op:hasDuration "PT6H"^^xsd:duration .  # 6 hours
+
+op:EventRule1 a op:EventRule ;
+    op:hasRuleDescription "No pets allowed" ;
+    op:hasRuleType "General Rule" .
+
+op:EventRule2 a op:EventRule ;
+    op:hasRuleDescription "No outside food or drinks allowed" ;
+    op:hasRuleType "Catering Rule" .
+
+op:EventRule3 a op:EventRule ;
+    op:hasRuleDescription "No smoking inside the venue" ;
+    op:hasRuleType "Smoking Rule" .
+
+op:EventRule4 a op:EventRule ;
+    op:hasRuleDescription "No entry without a valid ticket" ;
+    op:hasRuleType "Ticketing Rule" .
+
+op:EventRule5 a op:EventRule ;
+    op:hasRuleDescription "No photography during the event" ;
+    op:hasRuleType "Photography Rule" .
+
+op:EventRisk1 a op:EventRisk ;
+    op:hasRiskLevel "Low" ;
+    op:hasRiskDescription "Risk of tripping over cables" .
+
+op:EventRisk2 a op:EventRisk ;
+    op:hasRiskLevel "Medium" ;
+    op:hasRiskDescription "Risk of allergic reactions from food" .
+
+op:EventRisk3 a op:EventRisk ;
+    op:hasRiskLevel "High" ;
+    op:hasRiskDescription "Risk of fire hazard due to pyrotechnics" .
+
+op:EventRisk4 a op:EventRisk ;
+    op:hasRiskLevel "Medium" ;
+    op:hasRiskDescription "Risk of slippery floor due to spilled drinks" .
+
+op:EventRisk5 a op:EventRisk ;
+    op:hasRiskLevel "High" ;
+    op:hasRiskDescription "Risk of power outage due to electrical issues" .
+

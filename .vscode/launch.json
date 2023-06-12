@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "OrganizingPartyApplication",
+      "request": "launch",
+      "mainClass": "yusuf_yesilyurt.organizing_party.OrganizingPartyApplication",
+      "projectName": "organizing_party"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
