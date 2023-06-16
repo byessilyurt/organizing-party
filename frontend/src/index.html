@@ -8,18 +8,41 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script type="application/ld+json">
     {
-      "@context": "https://schema.org/",
-      "@type": "Recipe",
-      "name": "Party Coffee Cake",
-      "author": {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "Organizing Party - Home",
+      "description": "The homepage of Organizing Party. It includes a list of users and events, functionalities for user and event selection, as well as event creation and editing.",
+      "url": "https://www.organizingparty.com",
+      "mainEntity": [{
         "@type": "Person",
-        "name": "Mary Stone"
-      },
-      "datePublished": "2018-03-10",
-      "description": "This coffee cake is awesome and perfect for parties.",
-      "prepTime": "PT20M"
+        "name": "Users",
+        "description": "Users of the Organizing Party application. The detailed information of selected user is displayed."
+      },{
+        "@type": "Event",
+        "name": "Events",
+        "description": "Events managed by the Organizing Party application. The detailed information of selected event is displayed, and new events can be created and edited."
+      }],
+      "potentialAction": [{
+        "@type": "ViewAction",
+        "name": "Select User",
+        "description": "Allows the user to select a user from the list for detailed view."
+      },{
+        "@type": "CreateAction",
+        "name": "Create Event",
+        "description": "Allows the user to create a new event."
+      },{
+        "@type": "UpdateAction",
+        "name": "Update Event",
+        "description": "Allows the user to update an existing event."
+      },{
+        "@type": "DeleteAction",
+        "name": "Delete User or Event",
+        "description": "Allows the user to delete a user or an event from the list."
+      }]
     }
     </script>
+    
+    
 </head>
 <body>
   <app-root></app-root>
